@@ -4,10 +4,10 @@ import BlogCard from "../Components/BlogCard";
 //home page component 
 const HomePage = (props) => {
 
-
     return (
-        <div>
-            <h1>Express Blogger</h1>
+        <div id="blogCardsContainer">
+            <BlogCard  blogList={props.blogList}/>
+            
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import './App.css';
+//import '../../public/css/App.css';
 import { useState, useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from './Pages/HomePage';
@@ -6,6 +6,7 @@ import CreateBlogForm from './Pages/CreateBlogForm';
 import Layout from './Layouts/Layout';
 import axios from 'axios';
 
+//import NavBar from './Components/NavBar';
 
 const urlEndPoint = process.env.REACT_APP_URL_ENDPOINT;
 
@@ -15,7 +16,7 @@ function App() {
   const [shouldRefresh, setShouldRefresh] = useState(false);
 
   useEffect(()=> {
-    axios.get(`${urlEndPoint}/Blogs/all/`)
+    axios.get(`${urlEndPoint}/Blogs/`)
     .then(function (response){
       console.log(response);
       setBlogList(response.data.blogs);
@@ -33,7 +34,7 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/all",
+      path: "/",
       element: <Layout />,
       children: [
         {
@@ -46,8 +47,10 @@ function App() {
 
         },
         { 
-          path: "create-one",
-          element: <CreateBlogForm urlEndPoint={urlEndPoint} setShouldRefresh={setShouldRefresh}/>
+          path: "/create-one",
+          element: <CreateBlogForm 
+          urlEndPoint={urlEndPoint} 
+          setShouldRefresh={setShouldRefresh}/>
         }
       ]
 
@@ -56,11 +59,8 @@ function App() {
 
 
   return(
-    <div id="appContainer">
-      <h1>Full-Stack Blogger</h1>
-      <div id="blogCardContainer">
-        
-      </div>
+    <div className="App-header">
+      <RouterProvider router={router} />
     </div>
   ); 
 }

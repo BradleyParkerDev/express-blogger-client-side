@@ -1,0 +1,40 @@
+body{
+    display: flex;
+    justify-content: center;
+    /* background-image: url("typewriter.gif"); */
+  }
+  #pageHeader{
+    text-align: center;
+  }
+
+
+/* Blog card container */
+#cardContainer{
+    width: auto;
+    height: auto;
+    background-color: white;
+    border: 2px black solid;
+}
+
+#blogCardsContainer{
+    border: 5px dashed black;
+    /* margin-left: 300px;
+    margin-right: 300px; */
+    width: 900px;
+    height: auto;
+    /*margin-left: auto;
+    margin-right: auto;*/
+  }
+
+
+#blog-form{
+    width: auto;
+    height: auto;
+    border: 5px dashed black;
+
+
+
+}
+#navBar{
+    justify-content: center;
+}
