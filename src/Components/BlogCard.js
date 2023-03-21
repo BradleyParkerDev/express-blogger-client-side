@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-// import '../../public/css/style.css'
 
 const BlogCard =(props)=>{
     const [show, setShow] = useState(false);
@@ -16,9 +15,11 @@ const BlogCard =(props)=>{
             <div id="cardContainer">
 
                 <h1>{blog.title}</h1>
-                <h2>{blog.author}</h2>
+                <h3>{blog.author}</h3>
+                <h4>Created: {blog.createdAt}</h4>
+                <h4>Modified: {blog.lastModified}</h4>
                 <p>{blog.text}</p>
-
+  
 
             </div>
         ))

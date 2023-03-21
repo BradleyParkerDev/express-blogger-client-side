@@ -19,7 +19,6 @@ const CreateBlogForm = (props) =>{
 
     const postBlog = () =>{
 
-
         setShouldRefresh(true)
         console.log(urlEndPoint)
 		const req =  {
@@ -42,7 +41,6 @@ const CreateBlogForm = (props) =>{
         setShouldRefresh(false);
   }
     
-
 
     return(
 
@@ -74,21 +72,19 @@ const CreateBlogForm = (props) =>{
                 placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                 style={{ height: '300px', width: '900px'}}
                 onChange={(e)=>{
-                    setText(e.target.value) }}
+                    setText(e.target.value) 
+                }}
                 />
             </FloatingLabel>
-            <Button variant="primary" size="sm">
-                Discard
-            </Button>{' '}
+
             <Button variant="secondary" size="sm" onClick={()=>{
 				postBlog()
-				navigate("/")
+				navigate("/create-one")
 			}}>
                 Post
             </Button>        
         </div>
     )
-
 
 }
 

@@ -6,8 +6,6 @@ import CreateBlogForm from './Pages/CreateBlogForm';
 import Layout from './Layouts/Layout';
 import axios from 'axios';
 
-//import NavBar from './Components/NavBar';
-
 const urlEndPoint = process.env.REACT_APP_URL_ENDPOINT;
 
 function App() {
