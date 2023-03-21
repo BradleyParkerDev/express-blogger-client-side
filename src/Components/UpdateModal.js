@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import BlogCard from "./BlogCard"
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 const urlEndPoint = process.env.REACT_APP_URL_ENDPOINT;
@@ -16,29 +15,29 @@ const UpdateModal = (props) =>{
     // const navigate = useNavigate();
     // const {  urlEndPoint } = props;
     // console.log(urlEndPoint);
-    // //const { setShouldRefresh, urlEndPoint } = props;
+    const { setShouldRefresh } = props;
     const [title, setTitle] = useState(blog.title);
     const [author, setAuthor] = useState(blog.author);
-    const [category, setCategory] = useState(blog.category);
+    const [categories, setCategory] = useState(blog.categories);
     const [text, setText] = useState(blog.text);
-    const [lastModified, setLastModified] = useState(blog.lastModified)
+    // const [lastModified, setLastModified] = useState(blog.lastModified)
 
 
     const updateBlog = () =>{
 
-    //setShouldRefresh(true)
-    console.log(urlEndPoint)
+    setShouldRefresh(true)
 	const req =  {
       title: title,
       author: author,
-      category: category,
+      categories: categories.split(","),
       text: text,
-      lastModified: Date()
+      lastModified: new Date()
     }
 
-    axios.put(`${urlEndPoint}/blogs/update-one/:id`, req)
+    axios.put(`${urlEndPoint}/blogs/update-one/${blog.id}`, req)
     .then(function (response) {
       console.log(response);
+        setShouldRefresh(false);
     },{
       'Content-Type': 'application/x-www-form-urlencoded'
     })
@@ -46,7 +45,6 @@ const UpdateModal = (props) =>{
       console.log(error);
     }); 
 
-    //setShouldRefresh(false);
     }
 
 
@@ -58,7 +56,7 @@ const UpdateModal = (props) =>{
     return(
 
         <div
-            className="modal show"
+            // className="modal show"
             //style={{ display: 'block', position: 'initial' }}
         >
 
@@ -73,22 +71,22 @@ const UpdateModal = (props) =>{
                 </Modal.Header>
                 <Modal.Body>
 
-                <div id = "blog-form">
+                <div id = "modal-form">
                     <label>Title: </label>
                     <br/>
-                    <input type = 'text' placeholder="Updated React Article" onChange={(e)=>{
+                    <input type = 'text' value= {title} placeholder="Updated React Article" onChange={(e)=>{
                     setTitle(e.target.value) }}
                     />
                     <br/>
                     <label>Author: </label>
                     <br/>
-                    <input type = 'text' placeholder="Update Author Name" onChange={(e)=>{
+                    <input type = 'text' value = {author} placeholder="Update Author Name" onChange={(e)=>{
                     setAuthor(e.target.value) }}
                     />
                     <br/>
-                    <label>Category: </label>
+                    <label>Categories: </label>
                     <br/>
-                    <input type = 'text'placeholder="Ipsum" onChange={(e)=>{
+                    <input type = 'text' value = {categories} placeholder="Ipsum" onChange={(e)=>{
                     setCategory(e.target.value) }}
                     />
                     <br/>
@@ -98,7 +96,8 @@ const UpdateModal = (props) =>{
                         <Form.Control
                         as="textarea"
                         placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                        style={{ height: '300px', width: '900px'}}
+                        value ={text}
+                        style={{ height: '300px', width: "455px"}}
                         onChange={(e)=>{
                         setText(e.target.value) 
                         }}
@@ -114,6 +113,8 @@ const UpdateModal = (props) =>{
                 </Button>
                 <Button variant="primary"  onClick={()=>{
                     updateBlog()
+                    handleClose()
+
                 }}>
 
                     Save Changes

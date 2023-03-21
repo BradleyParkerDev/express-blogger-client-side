@@ -11,7 +11,7 @@ const CreateOnePage = (props) =>{
   
 
     return(
-      <CreateBlogForm urlEndPoint={props.urlEndPoint} />
+      <CreateBlogForm urlEndPoint={props.urlEndPoint} setShouldRefresh={props.setShouldRefresh}/>
     )
 
 }

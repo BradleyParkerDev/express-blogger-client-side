@@ -10,8 +10,7 @@ import Button from 'react-bootstrap/Button';
 const CreateBlogForm = (props) =>{
     const navigate = useNavigate();
     const {  urlEndPoint } = props;
-    console.log(urlEndPoint);
-    //const { setShouldRefresh, urlEndPoint } = props;
+    const { setShouldRefresh } = props;
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
     const [category, setCategory] = useState("");
@@ -20,7 +19,7 @@ const CreateBlogForm = (props) =>{
 
     const postBlog = () =>{
 
-    //setShouldRefresh(true)
+    setShouldRefresh(true)
     console.log(urlEndPoint)
 		const req =  {
       title: title,
@@ -32,6 +31,8 @@ const CreateBlogForm = (props) =>{
     axios.post(`${urlEndPoint}/blogs/create-one`, req)
     .then(function (response) {
       console.log(response);
+        setShouldRefresh(false);
+
     },{
       'Content-Type': 'application/x-www-form-urlencoded'
     })
@@ -39,7 +40,6 @@ const CreateBlogForm = (props) =>{
       console.log(error);
     }); 
 
-    //setShouldRefresh(false);
     }
     
 
@@ -80,7 +80,7 @@ const CreateBlogForm = (props) =>{
 
         <Button variant="secondary" size="sm" onClick={()=>{
           postBlog()
-          navigate("/create-one")
+          navigate("/")
         }}>
           Post
         </Button>        

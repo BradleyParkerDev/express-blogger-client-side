@@ -32,6 +32,13 @@ body{
 
 
 }
+
+#modal-form{
+  width: auto;
+  height: auto;
+  /* border: 5px dashed black; */
+
+}
 #navBar{
     justify-content: center;
 }

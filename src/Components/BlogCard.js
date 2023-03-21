@@ -3,14 +3,36 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import UpdateModal from "./UpdateModal";
+const urlEndPoint = process.env.REACT_APP_URL_ENDPOINT;
 
 const BlogCard =(props)=>{
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const { setShouldRefresh } = props;
+
+
 
     const {blogList} = props;
     console.log(blogList)
+
+
+    const deletePost = (id)=>{
+        setShouldRefresh(true)
+
+        axios.delete(`${urlEndPoint}/blogs/delete-one/${id}`)
+        .then(function (response) {
+            setShouldRefresh(false);
+        },{
+          'Content-Type': 'application/x-www-form-urlencoded'
+        })
+        .catch(function (error) {
+          console.log(error);
+        }); 
+    
+        
+    }
+
     return(
         blogList.map(blog=>(
             <div id="cardContainer">
@@ -21,7 +43,13 @@ const BlogCard =(props)=>{
                 <h4>Modified: {blog.lastModified}</h4>
                 <p>{blog.text}</p>
                 {/* <Button variant="primary">View</Button>{' '} */}
-                <UpdateModal blog={blog}/>
+                <div>
+                    <UpdateModal blog={blog} setShouldRefresh = {props.setShouldRefresh}/> 
+                    <Button variant="danger" onClick={()=>{
+                        deletePost(blog.id)
+                    }}>Delete</Button>
+
+                </div>
     
             </div>
 

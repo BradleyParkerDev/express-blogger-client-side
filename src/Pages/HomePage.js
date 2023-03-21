@@ -6,7 +6,7 @@ const HomePage = (props) => {
 
     return (
         <div id="blogCardsContainer">
-            <BlogCard  blogList={props.blogList}/>
+            <BlogCard  blogList={props.blogList} setShouldRefresh={props.setShouldRefresh}/>
             
         </div>
     )

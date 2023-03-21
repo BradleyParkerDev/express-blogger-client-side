@@ -6,7 +6,6 @@ import Layout from './Layouts/Layout';
 import axios from 'axios';
 import GetOnePage from './Pages/GetOnePage';
 const urlEndPoint = process.env.REACT_APP_URL_ENDPOINT;
-
 function App() {
 
   const [blogList, setBlogList] = useState([]);
@@ -26,7 +25,7 @@ function App() {
       //always executed
     })
 
-  },[])
+  },[shouldRefresh])
   
 
   const router = createBrowserRouter([
