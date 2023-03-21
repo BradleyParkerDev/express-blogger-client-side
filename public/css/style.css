@@ -1,14 +1,13 @@
 body{
     display: flex;
     justify-content: center;
-    /* background-image: url("typewriter.gif"); */
-  }
-  #pageHeader{
-    text-align: center;
-  }
+}
+#pageHeader{
+  text-align: center;
+}
 
 
-/* Blog card container */
+
 #cardContainer{
     width: auto;
     height: auto;
@@ -18,12 +17,10 @@ body{
 
 #blogCardsContainer{
     border: 5px dashed black;
-    /* margin-left: 300px;
-    margin-right: 300px; */
+
     width: 900px;
     height: auto;
-    /*margin-left: auto;
-    margin-right: auto;*/
+
   }
 
 

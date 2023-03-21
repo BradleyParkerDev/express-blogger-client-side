@@ -1,11 +1,10 @@
-//import '../../public/css/App.css';
 import { useState, useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from './Pages/HomePage';
-import CreateBlogForm from './Pages/CreateBlogForm';
+import CreateOnePage from './Pages/CreateOnePage';
 import Layout from './Layouts/Layout';
 import axios from 'axios';
-
+import GetOnePage from './Pages/GetOnePage';
 const urlEndPoint = process.env.REACT_APP_URL_ENDPOINT;
 
 function App() {
@@ -46,7 +45,13 @@ function App() {
         },
         { 
           path: "/create-one",
-          element: <CreateBlogForm 
+          element: <CreateOnePage 
+          urlEndPoint={urlEndPoint} 
+          setShouldRefresh={setShouldRefresh}/>
+        },
+        { 
+          path: "/get-one/:id",
+          element: <GetOnePage 
           urlEndPoint={urlEndPoint} 
           setShouldRefresh={setShouldRefresh}/>
         }
