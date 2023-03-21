@@ -78,7 +78,7 @@ const CreateBlogForm = (props) =>{
             />
         </FloatingLabel>
 
-        <Button variant="secondary" size="sm" onClick={()=>{
+        <Button variant="primary" size="sm" onClick={()=>{
           postBlog()
           navigate("/")
         }}>

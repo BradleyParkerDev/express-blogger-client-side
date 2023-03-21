@@ -14,7 +14,7 @@ const BlogCard =(props)=>{
 
 
     const {blogList} = props;
-    console.log(blogList)
+    // console.log(blogList)
 
 
     const deletePost = (id)=>{
@@ -42,8 +42,9 @@ const BlogCard =(props)=>{
                 <h4>Created: {blog.createdAt}</h4>
                 <h4>Modified: {blog.lastModified}</h4>
                 <p>{blog.text}</p>
+                <p>Categories: {blog.categories.join(", ")}</p>
                 {/* <Button variant="primary">View</Button>{' '} */}
-                <div>
+                <div id="card-buttons">
                     <UpdateModal blog={blog} setShouldRefresh = {props.setShouldRefresh}/> 
                     <Button variant="danger" onClick={()=>{
                         deletePost(blog.id)

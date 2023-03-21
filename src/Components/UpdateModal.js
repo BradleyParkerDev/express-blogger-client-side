@@ -11,7 +11,7 @@ const UpdateModal = (props) =>{
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const {blog} = props
-    console.log(blog)
+    // console.log(blog)
     // const navigate = useNavigate();
     // const {  urlEndPoint } = props;
     // console.log(urlEndPoint);
