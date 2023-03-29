@@ -4,6 +4,8 @@ import HomePage from './Pages/HomePage';
 import CreateOnePage from './Pages/CreateOnePage';
 import Layout from './Layouts/Layout';
 import axios from 'axios';
+import LoginPage from './Pages/LoginPage';
+import RegistrationPage from './Pages/RegistrationPage';
 const urlEndPoint = process.env.REACT_APP_URL_ENDPOINT;
 function App() {
 
@@ -44,6 +46,18 @@ function App() {
         { 
           path: "/create-one",
           element: <CreateOnePage 
+          urlEndPoint={urlEndPoint} 
+          setShouldRefresh={setShouldRefresh}/>
+        },
+        { 
+          path: "/users/login",
+          element: <LoginPage 
+          urlEndPoint={urlEndPoint} 
+          setShouldRefresh={setShouldRefresh}/>
+        },
+        { 
+          path: "/users/Registration",
+          element: <RegistrationPage 
           urlEndPoint={urlEndPoint} 
           setShouldRefresh={setShouldRefresh}/>
         }

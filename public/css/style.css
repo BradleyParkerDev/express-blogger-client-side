@@ -6,8 +6,6 @@ body{
   text-align: center;
 }
 
-
-
 #cardContainer{
     width: auto;
     height: auto;
@@ -36,6 +34,18 @@ body{
     /* border: 5px dashed black; */
 
 
+
+}
+#loginPage{
+  width: auto !important;
+  height: auto !important;
+  border: 5px dashed black !important;
+}
+
+#registrationPage{
+  width: auto;
+  height: auto;
+  border: 5px dashed black;
 
 }
 

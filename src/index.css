@@ -1,1 +1,33 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+#pageHeader{
+  text-align: center;
+}
 
+
+
+
+#loginPage{
+    text-align: center;
+    width: 900px;
+    height: 300px;
+    border: 2px solid black ;
+
+    /* border: 5px dashed black ; */
+}
+
+#registrationPage{
+    text-align: center;
+    width: 900px;
+    height: 300px;
+    border: 2px solid black ;
+
+    /* border: 5px dashed black ; */
+
+}
+
+#navBar{
+    justify-content: center;
+}

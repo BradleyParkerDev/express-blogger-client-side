@@ -4,8 +4,9 @@ import NavBar from "../Components/NavBar";
 const Layout = () => {
     return (
         <div>
-            <h1 id="pageHeader">Full-Stack Blogger</h1>
             <NavBar />
+
+            <h1 id="pageHeader">Full-Stack Blogger</h1>
             <Outlet/>
         </div>
     );
