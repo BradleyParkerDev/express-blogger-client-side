@@ -35,7 +35,7 @@ const BlogCard =(props)=>{
 
     return(
         blogList.map(blog=>(
-            <div id="cardContainer">
+            <div className="cardContainer">
 
                 <h1>{blog.title}</h1>
                 <h3>{blog.author}</h3>
@@ -44,7 +44,7 @@ const BlogCard =(props)=>{
                 <p>{blog.text}</p>
                 <p>Categories: {blog.categories.join(", ")}</p>
                 {/* <Button variant="primary">View</Button>{' '} */}
-                <div id="card-buttons">
+                <div className="card-buttons">
                     <UpdateModal blog={blog} setShouldRefresh = {props.setShouldRefresh}/> 
                     <Button variant="danger" onClick={()=>{
                         deletePost(blog.id)

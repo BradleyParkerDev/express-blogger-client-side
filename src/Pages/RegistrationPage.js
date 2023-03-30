@@ -26,6 +26,7 @@ const RegistrationPage = (props) => {
               setEmail(e.target.value);
             }}
           />
+          {" "}
           <label>Password: </label>
           <input
             type="password"
@@ -33,6 +34,7 @@ const RegistrationPage = (props) => {
               setPassword(e.target.value);
             }}
           />
+          {" "}
           <button
             onClick={async () => {
               const registerResult = await auth.register(email, password);

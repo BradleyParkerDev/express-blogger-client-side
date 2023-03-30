@@ -6,7 +6,7 @@ body{
   text-align: center;
 }
 
-#cardContainer{
+.cardContainer{
     width: auto;
     height: auto;
     background-color: white;
@@ -14,7 +14,7 @@ body{
     margin: 10px 10px 10px 10px;
 }
 
-#card-buttons{
+.card-buttons{
   white-space: nowrap;
   display: inline-block;
 }

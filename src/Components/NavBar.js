@@ -13,7 +13,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 const NavBar = (props) => {
     const auth = useAuth();
     let expand = false;
-
+    // let userMessage = auth.scope;
     function ShowLogoutButton(){
         return(
                 <button onClick={()=>{
@@ -45,19 +45,6 @@ const NavBar = (props) => {
 
 
     return (
-        // <div id="navBar">
-        //     <h3>{auth.userEmail && `Current User: ${auth.userEmail}`}</h3>
-        //     <Link to="/">Home</Link>
-        //     <Link to="/create-one">Create Blog</Link>
-        //     <Link to="/users/registration">Registration Form</Link>
-		// 	<Link to="/users/login">Login Form</Link>
-        //     <button onClick={()=>{
-		// 		auth.logout()
-		// 	}}>Logout</button>
-        //     {/* <Link to="/get-one/:id">Create Blog</Link> */}
-
-        // </div>
-
 
         <div id='navBar'>
             <Navbar id = "expressBloggerNav" key={expand} bg="white" expand={expand} className="mb-3">
@@ -75,13 +62,15 @@ const NavBar = (props) => {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Nav className="justify-content-end flex-grow-1 pe-3">
-                        <h3>{auth.userEmail && `Current User: ${auth.userEmail}`}</h3>
+                        <h3>{auth.scope && `${auth.scope}:`}</h3>
+                        <h3>{auth.userEmail && `${auth.userEmail}`}</h3>
+
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/create-one">Create Blog</Nav.Link>
-
                         <LoggedIn />
 
-                    </Nav> 
+                    </Nav>
+
                 </Offcanvas.Body>
                 </Navbar.Offcanvas>
             </Container>
@@ -90,3 +79,19 @@ const NavBar = (props) => {
     )
 }
 export default NavBar;
+
+
+{/* <Form className="d-flex">
+<Form.Control
+type="search"
+placeholder="Search"
+className="me-2"
+aria-label="Search"
+/>
+<Button variant="success"
+onClick={()=>{
+    navigate(`/blogs/get-one/${}`)
+}}>
+    Search
+</Button>
+</Form>  */}

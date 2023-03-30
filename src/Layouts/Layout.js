@@ -5,7 +5,6 @@ const Layout = () => {
     return (
         <div>
             <NavBar />
-
             <h1 id="pageHeader">Full-Stack Blogger</h1>
             <Outlet/>
         </div>

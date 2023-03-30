@@ -27,6 +27,7 @@ const LoginPage = (props) => {
             setEmail(e.target.value);
           }}
         />
+        {" "}
         <label>Password: </label>
         <input
           type="password"
@@ -34,6 +35,7 @@ const LoginPage = (props) => {
             setPassword(e.target.value);
           }}
         />
+        {" "}
         <button
           onClick={async () => {
 

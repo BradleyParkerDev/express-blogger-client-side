@@ -7,7 +7,8 @@ const AuthContext = createContext();
 */
 export const AuthProvider = ({ children }) => {
   const [userToken, setUserToken] = useState(null);
-	const [userEmail, setUserEmail] = useState("")
+	const [userEmail, setUserEmail] = useState("");
+  const [scope, setScope] = useState("");
   const [isAuthLoading, setIsAuthLoading] = useState(false);
 
   useEffect(() => {
@@ -20,6 +21,9 @@ export const AuthProvider = ({ children }) => {
 		if (userData && userData.email) {
 			setUserEmail(userData.email);
 		}
+    if(userData && userData.userType){
+      setScope(userData.userType);
+    }
   }, [isAuthLoading]);
 
   // call this function when you want to register the user
@@ -37,9 +41,10 @@ export const AuthProvider = ({ children }) => {
 		console.log("auth hook loginResult: ", loginResult)
     if (loginResult.success) {
       //update browser session details 
-      setLSUserData(loginResult.token, loginResult.email);
+      setLSUserData(loginResult.token, loginResult.email, loginResult.userType);
     }
     setIsAuthLoading(false);
+    setScope(loginResult.userType)
     return loginResult
   };
 
@@ -50,6 +55,7 @@ export const AuthProvider = ({ children }) => {
 		setUserToken(null);
 		setUserEmail("");
     setIsAuthLoading(false);
+    setScope("");
   };
 
   /*  
@@ -59,6 +65,7 @@ export const AuthProvider = ({ children }) => {
   */
   const value = useMemo(
     () => ({
+      scope,
       userToken,
 			userEmail,
       login,
@@ -103,16 +110,17 @@ const loginUser = async (email, password) => {
     }),
   });
   const responseJSON = await response.json();
+  console.log(responseJSON);
   return responseJSON;
 };
 
-const setLSUserData = (token, email) => {
+const setLSUserData = (token, email, userType) => {
 
   // caching our token session/ email 
   // in the browser window
   localStorage.setItem(
     process.env.REACT_APP_TOKEN_HEADER_KEY,
-    JSON.stringify({token, email})
+    JSON.stringify({token, email, userType})
   );
 };
 
